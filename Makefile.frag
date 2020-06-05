@@ -45,7 +45,8 @@ BP_DEMOS_C = \
   cache_hammer \
   jalr_illegal \
   satp_nofence \
-  manycore_poke
+  manycore_poke \
+  manycore_poke_fifo
 
 BP_DEMOS_S = \
 	simple                \
