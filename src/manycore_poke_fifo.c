@@ -55,7 +55,7 @@ void main(uint64_t argc, char * argv[]) {
     // Unused
     req_packet.request.x_src    = 0;
     // Unused
-    req_packet.request.y_src    = 0;
+    req_packet.request.y_src    = 1;
     req_packet.request.data     = 0xdeadbeef;
     req_packet.request.reg_id   = 0x0;
     // Store mask
@@ -72,13 +72,16 @@ void main(uint64_t argc, char * argv[]) {
     // Unused
     req_packet.request.x_src    = 0;
     // Unused
-    req_packet.request.y_src    = 0;
+    req_packet.request.y_src    = 1;
     req_packet.request.data     = 0;
     req_packet.request.reg_id   = 0xc;
     // Store mask
     req_packet.request.op_ex    = 0;
     req_packet.request.op       = 0; // Load
     req_packet.request.addr     = mc_csr_pc_eva;
+
+    *mc_link_bp_req_fifo_addr = req_packet.words[0];
+    *mc_link_bp_req_fifo_addr = req_packet.words[1];
 
     // Wait for response
     while (*mc_link_bp_resp_entries_addr == 0);
@@ -88,6 +91,6 @@ void main(uint64_t argc, char * argv[]) {
     resp_packet.words[0] = *mc_link_bp_resp_fifo_addr;
     resp_packet.words[1] = *mc_link_bp_resp_fifo_addr;
 
-    bp_finish(0);
+    while(1);
 }
 
