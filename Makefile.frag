@@ -46,6 +46,7 @@ BP_DEMOS_C = \
   uncached_mode_test    \
   amo_nonblocking       \
   amo_interrupt         \
+  cache_dword_hammer
 
 BP_DEMOS_S = \
   hello_world           \
